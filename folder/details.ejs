@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('./particial/header.ejs') %>
+<body>
+    <%- include("./particial/nav.ejs") %>
+    <div id="single_blog">
+        <h3><%= blog.title %></h3>
+        <p><%= blog.body %></p>
+    </div><br><br>
+    <!--
+        delete botton
+        data-'name' => this is a variable to store the id of the blog we will delete
+                    we name it : "data-doc"
+    -->
+    <a class="delete_button" data-doc="<%= blog._id %>"><button class="btn_delete">Delete</button></a>
+    <%- include('./particial/copyRights.ejs')%>
+
+    <script>
+        // this script is to send the delete req to the server
+
+        //first we save the button element in a variable to use it later
+        const btn = document.querySelector("a.delete_button")
+
+        btn.addEventListener('click' , (e)=> {
+            const path = `/blog/${btn.dataset.doc}`
+
+            /* 
+            now we use the fetch api to send the delete request:
+                the path & the delete method 
+            */
+            fetch(path , {method : "DELETE"}).then((result) =>{
+                /*
+                    after sending the req to the server , the server will return for
+                    us a jason object
+                    and we will parse it as a JS object
+                */
+                return result.json()
+            }).then((data)=>{
+                /*
+                    data :
+                        this is the json object with the path of the redirection
+                        we will use to redirect
+                */
+                window.location.href = data.redirect ; // this redirect us to the "blogs" page
+
+            }).catch(err =>{
+                console.log(`error ${err}`)
+            })
+
+        })
+
+    </script>
+
+</body>
+</html>

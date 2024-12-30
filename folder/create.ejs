@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('./particial/header.ejs') %>
+<body>
+    <%- include("./particial/nav.ejs") %>
+    <div id="create-page">
+        <form action="/new_blog" method="post">
+            <h4 class="blog-cr">Blog title</h4>
+            <input type="text" id="body-title" name="title">
+
+            <h4 class="blog-cr">Blog body</h4>
+            <textarea cols="40" rows="10" id="body-text" name="body"></textarea><br>
+            
+            <input type="submit" value="Add" id="submit">
+        </form>
+    </div>
+    <%- include('./particial/copyRights.ejs') %>
+
+</body>
+</html>

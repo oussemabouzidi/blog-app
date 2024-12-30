@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('./particial/header.ejs') %>
+<body>
+    <!--
+        we use the include methode in the ejs file to
+        call the html element from the particial file
+    -->
+    <%- include("./particial/nav.ejs") %>
+    <div class="body-page">
+        <h1>this is the main page</h1>
+    </div>
+    <!--
+        We inject in data passed in main.js file with the ejs 
+        balise : "<% %>"
+    -->
+    <%- include('./particial/copyRights.ejs') %>
+
+</body>
+</html>

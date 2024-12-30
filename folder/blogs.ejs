@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('./particial/header.ejs') %>
+<body>
+    <%- include("./particial/nav.ejs") %>
+
+        <!--
+            the littel hard part here is working iwth ejs code
+            to read from the array and show it here
+        -->
+        <!-- First we gotta be sure that we the object is not empty -->
+    <div class="body-page">
+        <% if (blogs.length > 0) { %>
+            <% blogs.forEach(blog => { %>
+                <a id="none_style" href="/blog/<%=blog._id%>">
+                    <h3><%= blog.title %></h3>
+                    <p><%= blog.body %></p>
+                </a>
+            <% }) %>
+        <% } else { %>
+            <p>No blog found ...</p>
+        <% } %>
+    </div>
+    <%- include('./particial/copyRights.ejs')%>
+</body>
+</html>
